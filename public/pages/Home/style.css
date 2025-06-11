@@ -1,0 +1,311 @@
+.highlight .highlight-container {
+    width: 100%;
+    overflow: hidden;
+    max-height: 80vh;
+    display: flex;
+    align-items: center;
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, .95), rgba(0, 0, 0, .8), rgba(0, 0, 0, .3));
+    position: relative;
+}
+
+.highlight .highlight-container img {
+    width: 100%;
+    z-index: -1;
+}
+
+.highlight .highlight-container .movie-infos {
+    position: absolute;
+    display: flex;
+    bottom: 20%;
+    left: 10%;
+    display: flex;
+    flex-direction: column;
+}
+
+.highlight .highlight-container .movie-infos h3 {
+    font-size: 3.5rem;
+}
+
+.highlight .highlight-container .movie-infos .buttons {
+    display: flex;
+    margin: 2rem 0 0 0;
+}
+
+.highlight .highlight-container .movie-infos .buttons a {
+    margin: 0 1.5rem 0 0;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: .3s;
+    padding: 1.3rem 2.5rem;
+    text-decoration: none;
+    color: currentColor;
+}
+
+.highlight .highlight-container .movie-infos .buttons a:hover {
+    transform: scale(1.1);
+}
+
+.highlight .highlight-container .movie-infos .buttons .watch {
+    background-color: white;
+    color: black;
+    display: flex;
+    align-items: center;
+}
+
+.highlight .highlight-container .movie-infos .buttons .watch:hover {
+    background-color: rgb(var(--primary-color));
+}
+
+.highlight .highlight-container .movie-infos .buttons .watch i, .highlight .highlight-container .movie-infos .buttons .info i {
+    margin: 0 10px 0 0;
+}
+
+.highlight .highlight-container .movie-infos .buttons .info {
+    background-color: black;
+}
+
+main {
+    padding: 4rem 0;
+}
+
+main .row-list {
+    display: flex;
+    flex-direction: column;
+}
+
+main .row-list:not(:nth-child(1)) {
+    margin-top: 3rem;
+}
+
+main .row-list .genre-title {
+    font-size: 1.5rem;
+    margin-left: 4rem;
+}
+
+main .row-list .movies-caroussel-container {
+    width: 100%;
+    overflow-x: auto;
+    margin-top: 1.5rem;
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
+    margin-top: 1.5rem;
+    position: relative;
+}
+
+/* main .row-list .movies-caroussel-container::before {
+    content: '';
+    background: linear-gradient(to right, rgb(0,0,0) , transparent 15% 85%, rgb(0,0,0));
+    width: 100%;
+    height: 100%;
+    z-index: 100;
+    pointer-events: none;
+    position: ;
+} */
+
+main .row-list .movies-caroussel-container::-webkit-scrollbar {
+    display: none;
+}
+
+main .row-list .movies-caroussel-content {
+    display: flex;
+    gap: 1rem;
+    width: fit-content;
+    left: -2%;
+}
+
+main .row-list .movies-caroussel-content .movie {
+    overflow: hidden;
+    cursor: pointer;
+    transition: .5s;
+    position: relative;
+    scroll-snap-align: center;
+    min-height: 100%;
+}
+
+main .row-list .movies-caroussel-content .movie a {
+    color: currentColor;
+}
+
+main .row-list .movies-caroussel-content .movie img {
+    width: 350px;
+}
+
+main .row-list .movies-caroussel-content .movie .movie-info-container {
+    overflow: hidden;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    height: 100%;
+    padding: 2rem;
+    background-color: rgba(0, 0, 0, .9);
+    transform: translate(-100%, 0);
+    transition: .5s;
+    padding: 1rem;
+}
+
+main .row-list .movies-caroussel-content .movie:hover .movie-info-container {
+    transform: translate(0, 0);
+}
+
+main .row-list .movies-caroussel-content .movie .movie-info-container .movie-title {
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+main .row-list .movies-caroussel-content .movie .movie-info-container .movie-resume {
+    margin-top: 1rem;
+    font-size: .8rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+footer {
+    width: 100%;
+    display: flex;
+    padding: 4rem;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: rgb(0, 0, 0);
+}
+
+footer img {
+    width: 150px;
+}
+
+footer h1 {
+    margin: 1rem 0 0 0;
+}
+
+footer ul {
+    margin: 2rem 0 0 0;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 0;
+}
+
+footer ul li {
+    margin: .5rem 0;
+}
+
+footer ul li a {
+    text-decoration: none;
+    color: currentColor;
+    transition: .3s;
+}
+
+footer ul li a:hover {
+    text-decoration: none;
+    color: rgba(var(--primary-color), 1);
+    text-decoration: underline;
+}
+
+.open-menu-mobile {
+    display: none;
+}
+
+@media (max-width: 992px) {
+    header {
+        flex-direction: column;
+        width: 100%;
+        height: 100vh;
+        transform: translate(100%, 0);
+        position: fixed;
+        top: 0;
+        left: 0;
+        background-color: rgba(0, 0, 0, .9);
+    }
+
+    header.open {
+        transform: translate(0, 0);
+    }
+
+    header nav {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    header nav a {
+        margin: 1rem 0;
+    }
+
+    .open-menu-mobile {
+        display: block;
+        position: inherit;
+        top: 2rem;
+        right: 2rem;
+        width: 3rem;
+        height: 3rem;
+        z-index: 100000;
+        position: fixed;
+    }
+
+    .open-menu-mobile::before {
+        content: '';
+        width: 100%;
+        height: .5rem;
+        background-color: white;
+        position: absolute;
+        border-radius: 5rem;
+        top: 30%;
+        right: 0;
+        transition: .5s;
+    }
+
+    .open-menu-mobile::after {
+        content: '';
+        width: 70%;
+        height: .5rem;
+        background-color: white;
+        position: absolute;
+        border-radius: 5rem;
+        top: 60%;
+        right: 0;
+        transition: .5s;
+    }
+
+    .open-menu-mobile.open::before {
+        top: 50%;
+        transform: rotate(225deg);
+    }
+
+    .open-menu-mobile.open::after {
+        width: 100%;
+        top: 50%;
+        transform: rotate(-225deg);
+    }
+}
+
+.main-description {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20vh;
+}
+
+.main-description .card {
+    padding: 4rem;
+    border-radius: 2rem;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 50%;
+    background-color: rgb(46, 46, 46);
+}
+
+.main-description .card img {
+    margin-top: 2rem;
+    max-width: 300px;
+}
+
+.main-description .card p {
+    margin-top: 2rem;
+    text-align: center;
+    width: 100%;
+}

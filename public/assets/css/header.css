@@ -1,0 +1,63 @@
+header {
+    background-color: transparent;
+    padding: 2rem;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10000;
+    transition: .5s;
+}
+
+header.scrolled {
+    background-color: rgba(0, 0, 0, .9);
+}
+
+header img {
+    width: 4rem;
+}
+
+header nav {
+    display: flex;
+}
+
+header nav a {
+    text-decoration: none;
+    color: currentColor;
+    margin: 0 2rem;
+    border-bottom: .2rem transparent solid;
+    transition: .3s;
+}
+
+header nav a:hover {
+    color: rgb(var(--primary-color));
+    border-bottom: .2rem rgb(var(--primary-color)) solid;
+}
+
+header .search-container a {
+    text-decoration: none;
+    color: currentColor;
+    transition: .3s;
+    background-color: transparent;
+    border-radius: 1000px;
+    width: 3rem;
+    height: 3rem;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+header .search-container {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+header .search-container a:hover {
+    color: rgb(var(--primary-color));
+    background-color: black;
+}
