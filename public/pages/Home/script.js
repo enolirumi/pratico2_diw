@@ -1,3 +1,4 @@
+import Movie from "../../js/contollers/Movie.js"
 
 const reqUrl = "https://api.themoviedb.org"
 
@@ -34,7 +35,7 @@ const requisicoes = {
     },
 }
 
-randInt = (min, max) => {
+const randInt = (min, max) => {
     min = Math.ceil(min)
     max = Math.floor(max)
 
@@ -45,7 +46,7 @@ const init = async () => {
     const moviesData = await requisicoes.movieDiscover(randInt(1, 10))
 
     console.log(moviesData);
-    
+
 
 
     const highlightImg = document.querySelector("#highlightImg");
@@ -60,11 +61,38 @@ const init = async () => {
 
     const main = document.querySelector("main")
 
+    main.innerHTML += `
+        <div class="row-list">
+            <span class="genre-title">Filmes Personalizados</span>
+            <div class="movies-caroussel-container">
+                <div class="movies-caroussel-content" data-identifyer="-1">
+                
+                </div>
+            </div>
+        </div>
+    `
+
+    const customMovies = await Movie.getAll()
+
+    customMovies.data.forEach(el => {
+        document.querySelector(`.movies-caroussel-content[data-identifyer="-1"]`).innerHTML += `
+            <div class="movie">
+                <img src="${el.backdrop_path}" alt="">
+                <a href="../Descricao?idfilme=${el.id}">
+                    <div class="movie-info-container">
+                        <span class="movie-title">${el.title}</span>
+                        <p class="movie-resume">${el.overview}</p>
+                    </div>
+                </a>
+            </div>
+        `
+    })
+
     genres.forEach(async (e, i) => {
-        
+
         main.innerHTML += `
         <div class="row-list">
-        <span class="genre-title">${e.name}</span>
+            <span class="genre-title">${e.name}</span>
             <div class="movies-caroussel-container">
                 <div class="movies-caroussel-content" data-identifyer="${i}">
                 
@@ -76,12 +104,11 @@ const init = async () => {
 
 
         requisicoes.movieDiscover(i + 1, e.id).then((data) => {
-            
-            
-            data.results.forEach((el) => {
-                const carousselContent = document.querySelector(`[data-identifyer="${i}"]`)
 
-                carousselContent.innerHTML += `
+
+            data.results.forEach((el) => {
+
+                document.querySelector(`[data-identifyer="${i}"]`).innerHTML += `
                     <div class="movie">
                         <img src="http://image.tmdb.org/t/p/w500${el.backdrop_path}" alt="">
                         <a href="../Descricao?idfilme=${el.id}">
@@ -93,26 +120,10 @@ const init = async () => {
                     </div>
                 `
             })
-            console.log(data);
-            
+
         })
 
 
-    })
-
-    document.querySelector(".open-menu-mobile").addEventListener("click", (ev) => {
-        
-        ev.target.classList.toggle("open")
-        document.querySelector("header").classList.toggle("open")
-    })
-
-
-    document.addEventListener('scroll', () => {
-        if (window.scrollY > 0) {
-            document.querySelector("header").classList.add("scrolled")
-        } else {
-            document.querySelector("header").classList.remove("scrolled")
-        }
     })
 }
 

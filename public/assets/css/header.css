@@ -61,3 +61,80 @@ header .search-container a:hover {
     color: rgb(var(--primary-color));
     background-color: black;
 }
+
+.open-menu-mobile {
+    display: none;
+}
+
+@media (max-width: 992px) {
+    header {
+        flex-direction: column;
+        width: 100%;
+        height: 100vh;
+        transform: translate(100%, 0);
+        position: fixed;
+        top: 0;
+        left: 0;
+        background-color: rgba(0, 0, 0, .9);
+    }
+
+    header.open {
+        transform: translate(0, 0);
+    }
+
+    header nav {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    header nav a {
+        margin: 1rem 0;
+    }
+
+    .open-menu-mobile {
+        display: block;
+        position: inherit;
+        top: 2rem;
+        right: 2rem;
+        width: 3rem;
+        height: 3rem;
+        z-index: 100000;
+        position: fixed;
+    }
+
+    .open-menu-mobile::before {
+        content: '';
+        width: 100%;
+        height: .5rem;
+        background-color: white;
+        position: absolute;
+        border-radius: 5rem;
+        top: 30%;
+        right: 0;
+        transition: .5s;
+    }
+
+    .open-menu-mobile::after {
+        content: '';
+        width: 70%;
+        height: .5rem;
+        background-color: white;
+        position: absolute;
+        border-radius: 5rem;
+        top: 60%;
+        right: 0;
+        transition: .5s;
+    }
+
+    .open-menu-mobile.open::before {
+        top: 50%;
+        transform: rotate(225deg);
+    }
+
+    .open-menu-mobile.open::after {
+        width: 100%;
+        top: 50%;
+        transform: rotate(-225deg);
+    }
+}

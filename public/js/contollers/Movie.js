@@ -1,5 +1,9 @@
 import { base_url } from "../globals.js"
 
+const headers = new Headers()
+headers.append("Content-Type", "application/json");
+headers.append("Access-Control-Allow-Origin", "*");
+
 const Movie = {
 
     add: async (data) => {
@@ -64,7 +68,7 @@ const Movie = {
 
             returnData.msg = "Sucesso ao excluir filme!"
             returnData.status = "success"
-        } catch(err) {
+        } catch (err) {
             returnData.data = {}
             returnData.msg = "Erro interno ao excluir, tente novamente mais tarde!"
             returnData.status = "error"
@@ -94,7 +98,7 @@ const Movie = {
         }
     },
 
-    getById: async () => {
+    getById: async (id) => {
         const retorno = await fetch(`${base_url}/movies/${id}`, {
             method: "GET",
             headers: headers

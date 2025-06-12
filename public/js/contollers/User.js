@@ -2,6 +2,10 @@
 
 import { base_url } from "../globals.js";
 
+const headers = new Headers()
+headers.append("Content-Type", "application/json");
+headers.append("Access-Control-Allow-Origin", "*");
+
 const User = {
 
     getById: async (id) => {
@@ -17,18 +21,18 @@ const User = {
     },
 
     login: async (data) => {
-        const {email, password} = data;
+        const { email, password } = data;
 
         const retorno = {
             status: "error"
         }
 
-        if(!email) {
+        if (!email) {
             retorno.msg = "Por favor, preencha o email!"
             return retorno
         }
 
-        if(!password) {
+        if (!password) {
             retorno.msg = "Por favor, preencha a senha!"
             return retorno
         }
@@ -37,10 +41,11 @@ const User = {
 
         try {
             user = await User.getByEmail(email)
-        } catch(err) {
+        } catch (err) {
             retorno.msg = "Erro interno, tente novamente mais tarde!"
             return retorno
         }
+
 
 
     }

@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     <link rel="stylesheet" href="../../assets/css/global.css">
     <link rel="stylesheet" href="../../assets/css/header.css">
+    <link rel="stylesheet" href="../../assets/css/footer.css">
     <link rel="stylesheet" href="./style.css">
 </head>
 
@@ -28,32 +29,58 @@
             <a href="#"><i class="fa-solid fa-user"></i></a>
         </div>
     </header>
+    <div class="open-menu-mobile">
+        
+    </div>
 
     <main>
         <form id="movies-form" class="form">
             <h3>CRUD Filmes</h3>
             <div>
                 <div>
-                    <div>
-                        <label for="">Nome do filme</label>
-                        <input name="title" type="text">
-                    </div>
-                    <div>
-                        <label for=""></label>
-                        <input name="title" type="text">
-                    </div>
+                    <label for="">ID</label><br>
+                    <input name="id" id="idMovie" type="text" disabled>
                 </div>
                 <div>
-                    <label for=""></label>
-                    <input name="title" type="text">
+                    <label for="">Nome do filme</label><br>
+                    <input name="titleMovie" id="titleMovie" type="text">
+                </div>
+                <div>
+                    <label for="">Descrição</label><br>
+                    <textarea name="descriptionMovie" id="descriptionMovie"></textarea>
+                </div>
+                <div>
+                    <label for="">URL do banner do filme</label><br>
+                    <input type="text" name="bannerMovie" id="bannerMovie">
+                </div>
+                <div>
+                    <label for="">URL do card do filme</label><br>
+                    <input type="text" name="cardMovie" id="cardMovie">
+                </div>
+                <div class="buttons-container">
+                    <button type="button" id="delete-btn" disabled>Deletar</button>
+                    <button type="reset" id="reset-btn">Reiniciar formulário</button>
+                    <button type="submit" id="add-btn">Adicionar</button>
                 </div>
             </div>
         </form>
-        <div class="custom-movies-container">
-
-        </div>
     </main>
 
+    <section class="custom-movies-container">
+
+    </section>
+
+    <footer>
+        <img src="../../assets/images/446256.png" alt="">
+        <h1>MovieFlix</h1>
+        <ul>
+            <li><a href="#">Sobre nós</a></li>
+            <li><a href="#">SAC</a></li>
+            <li><a href="#">Trabalhe conosco</a></li>
+        </ul>
+    </footer>
+
+    <script src="../../js/header.js" defer></script>
     <script type="module" src="./script.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js" defer></script>
 </body>
